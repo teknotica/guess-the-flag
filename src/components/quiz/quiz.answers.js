@@ -53,7 +53,7 @@ const QuizAnswers = ({
                     </div>
                 )
             })}
-            {showScore && <QuizResult score={getLocalItem('quiz_result')} />}
+            {showScore &&  <QuizResult score={getLocalItem('quiz_result')} />}
         </Fragment>
     )
 }

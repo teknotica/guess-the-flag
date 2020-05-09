@@ -10,6 +10,12 @@ export const backLinkCss = css`
     margin-bottom: 2rem;
 `;
 
+export const buttonBasicCss = css`
+    width: 300px;
+    height: 35px;
+    font-size: 16px;
+`;
+
 export const quizItemCss = css`
     margin-bottom: 3rem;
 `;
@@ -31,9 +37,7 @@ export const buttonCss = ({
     answeredCorrectly, 
     highlightCorrectAnswer 
 }) => css`
-    width: 300px;
-    height: 35px;
-    font-size: 16px;
+    ${buttonBasicCss};
     margin-bottom: 10px;
     cursor: pointer;
     ${isAnswered && isCurrentAnswer && css`
@@ -44,6 +48,10 @@ export const buttonCss = ({
         background: #79c979;
         color: white;
     `};
+`;
+
+export const resultContainerCss = css`
+    margin-top: 30px;
 `;
 
 export const resultsOverlayCss = css`
