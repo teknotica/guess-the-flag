@@ -45,3 +45,28 @@ export const buttonCss = ({
         color: white;
     `};
 `;
+
+export const resultsOverlayCss = css`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(250, 235, 215, 0.90);
+`;
+
+export const resultsContentCss = css`
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+`
+
+export const resultsCloseCss = css`
+    position: fixed;
+    top: 0;
+    right: 0;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+`

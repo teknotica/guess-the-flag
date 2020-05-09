@@ -31,12 +31,17 @@ export const Quiz = ({ region, regionFlags, setRegionFlags }) => {
     
   
     useEffect(() => {
-        // If region flags are not in the state
-        // fetch and save 
+        sessionStorage.setItem('quiz_answered_counter', 0);
+        sessionStorage.setItem('quiz_result', 0);
+        
+        // If region flags are not in the state fetch and save 
         if (!regionFlagsInStore) {
             fetchFlags();
         }
-    }, [fetchFlags, regionFlagsInStore])
+        return () => {
+            sessionStorage.clear();
+        }
+    }, [fetchFlags, region, regionFlagsInStore]);
 
     if (loading && !regionFlagsInStore) {
         return <div>Loading flags...</div>;

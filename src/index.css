@@ -6,3 +6,7 @@ body {
   text-align: center;
   background: beige;
 }
+
+a {
+  text-decoration: none;
+}
