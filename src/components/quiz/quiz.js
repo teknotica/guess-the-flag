@@ -42,9 +42,9 @@ export const Quiz = ({ region, regionFlags, setRegionFlags }) => {
         return <div>Loading flags...</div>;
     }
 
-    const suffleFlags = shuffle(regionFlags[region]);
-    const slicedFlags = suffleFlags.slice(0, QUIZ_QUESTIONS_COUNT);
-    const otherFlags = suffleFlags.slice(QUIZ_QUESTIONS_COUNT + 1);
+    const shuffleFlags = shuffle(regionFlags[region]);
+    const slicedFlags = shuffleFlags.slice(0, QUIZ_QUESTIONS_COUNT);
+    const otherFlags = shuffleFlags.slice(QUIZ_QUESTIONS_COUNT + 1);
 
     return (
         <div css={quizWrapperCss}>
