@@ -1,2 +1,2 @@
-# guess-the-flag
-Little quiz app for my nephew and niece
+# Guess the flag
+Little quiz app for my nephew and niece 🐻
