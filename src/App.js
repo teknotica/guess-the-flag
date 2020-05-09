@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { Router } from "@reach/router"
-import Container from '@material-ui/core/Container';
 
 import { Quiz } from './components/quiz';
 import { Regions } from './components/regions';
@@ -12,7 +11,7 @@ const App = () => {
   const [regionFlags, setRegionFlags] = useState({});
 
   return (
-    <Container fixed>
+    <Fragment>
       <h1>
         <span role="img" aria-label="world icon">🌏</span>{' '}
         Guess the flag{' '} 
@@ -26,7 +25,7 @@ const App = () => {
           setRegionFlags={setRegionFlags} 
         />
       </Router>
-    </Container>
+    </Fragment>
   )
 };
 
