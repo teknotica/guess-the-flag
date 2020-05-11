@@ -12,8 +12,9 @@ export const backLinkCss = css`
 
 export const buttonBasicCss = css`
     width: 300px;
-    height: 35px;
-    font-size: 16px;
+    padding: 8px 0;
+    font-size: 15px;
+    cursor: pointer;
 `;
 
 export const quizItemCss = css`
@@ -39,7 +40,6 @@ export const buttonCss = ({
 }) => css`
     ${buttonBasicCss};
     margin-bottom: 10px;
-    cursor: pointer;
     ${isAnswered && isCurrentAnswer && css`
         background: ${answeredCorrectly ? '#79c979' : '#d73b0a'};
         color: white;
