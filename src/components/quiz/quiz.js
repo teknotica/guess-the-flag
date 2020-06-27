@@ -54,7 +54,7 @@ export const Quiz = ({ region, regionFlags, setRegionFlags }) => {
     return (
         <div css={quizWrapperCss}>
             <Link to="/" css={backLinkCss}>{`<< Back to regions`}</Link>
-            {slicedFlags.map((item, index) => (
+            {slicedFlags.map(item => (
                 <div key={item.alpha2Code} css={quizItemCss}>
                     <div css={quizFlagCss(item.flag)}>{item.name}</div>
                     {otherFlags && (
