@@ -11,7 +11,7 @@
     "knuth-shuffle-seeded": "^1.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "^3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,7 +21,9 @@
   },
   "eslintConfig": {
     "extends": "react-app",
-    "plugins": ["simple-import-sort"],
+    "plugins": [
+      "simple-import-sort"
+    ],
     "rules": {
       "sort-imports": "off",
       "import/order": "off",
