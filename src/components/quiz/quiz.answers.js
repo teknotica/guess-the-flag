@@ -1,61 +1,63 @@
-/** @jsx jsx */	
-import { jsx } from '@emotion/core';
-import shuffle from 'knuth-shuffle-seeded'
-import { Fragment,useEffect, useState } from 'react';
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
+import shuffle from "knuth-shuffle-seeded";
+import { Fragment, useEffect, useState } from "react";
 
-import { getLocalItem, getRandom, updateStorageVariables } from './quiz.helpers';
-import QuizResult from './quiz.results';
-import { buttonCss } from './quiz.styles';
+import {
+  getLocalItem,
+  getRandom,
+  updateStorageVariables,
+} from "./quiz.helpers";
+import QuizResult from "./quiz.results";
+import { buttonCss } from "./quiz.styles";
 
-const QuizAnswers = ({ 
-    correct, 
-    others,
-}) => {
-    const [answers, setAnswers] = useState([]);
-    const [isAnswered, setIsAnswered] = useState(false);
-    const [answeredOption, setAnsweredOption] = useState('');
-    const [showScore, setShowScore] = useState(false);
-    
-    useEffect(() => {
-        const firstOption = others.splice(getRandom(0, others.length - 1), 1);
-        const secondOption = others.splice(getRandom(0, others.length - 1), 1);
+const QuizAnswers = ({ correct, others }) => {
+  const [answers, setAnswers] = useState([]);
+  const [isAnswered, setIsAnswered] = useState(false);
+  const [answeredOption, setAnsweredOption] = useState("");
+  const [showScore, setShowScore] = useState(false);
 
-        const { name: firstOptionName } = firstOption[0];
-        const { name: secondOptionName } = secondOption[0];
+  useEffect(() => {
+    const firstOption = others.splice(getRandom(0, others.length - 1), 1);
+    const secondOption = others.splice(getRandom(0, others.length - 1), 1);
 
-        setAnswers(shuffle([firstOptionName, secondOptionName, correct]));
-    }, [correct, others]);
+    const { name: firstOptionName } = firstOption[0];
+    const { name: secondOptionName } = secondOption[0];
 
-    if (!!!answers.length) {
-        return <div>Loading...</div>
-    }
+    setAnswers(shuffle([firstOptionName, secondOptionName, correct]));
+  }, [correct, others]);
 
-    return (
-        <Fragment>
-            {answers.map((answer, index) => {
-                return (
-                    <div key={index}>
-                        <button
-                            disabled={!!answeredOption}
-                            css={buttonCss({ 
-                                isAnswered,
-                                answeredCorrectly: answeredOption === correct,
-                                isCurrentAnswer: answeredOption === answer, 
-                                highlightCorrectAnswer: answer === correct
-                            })} 
-                            onClick={() => {
-                                setIsAnswered(true);
-                                setAnsweredOption(answer);
-                                updateStorageVariables({answer, correct, setShowScore});
-                            }}>
-                                {answer}
-                            </button>
-                    </div>
-                )
-            })}
-            {showScore &&  <QuizResult score={getLocalItem('quiz_result')} />}
-        </Fragment>
-    )
-}
+  if (!!!answers.length) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <Fragment>
+      {answers.map((answer, index) => {
+        return (
+          <div key={index}>
+            <button
+              disabled={!!answeredOption}
+              css={buttonCss({
+                isAnswered,
+                answeredCorrectly: answeredOption === correct,
+                isCurrentAnswer: answeredOption === answer,
+                highlightCorrectAnswer: answer === correct,
+              })}
+              onClick={() => {
+                setIsAnswered(true);
+                setAnsweredOption(answer);
+                updateStorageVariables({ answer, correct, setShowScore });
+              }}
+            >
+              {answer}
+            </button>
+          </div>
+        );
+      })}
+      {showScore && <QuizResult score={getLocalItem("quiz_result")} />}
+    </Fragment>
+  );
+};
 
 export default QuizAnswers;

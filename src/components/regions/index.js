@@ -1,1 +1,1 @@
-export { Regions } from './regions';
+export { Regions } from "./regions";
