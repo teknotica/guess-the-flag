@@ -3,29 +3,41 @@ import { jsx } from "@emotion/core";
 import shuffle from "knuth-shuffle-seeded";
 import { Fragment, useEffect, useState } from "react";
 
-import {
-  getLocalItem,
-  getRandom,
-  updateStorageVariables,
-} from "./quiz.helpers";
-import QuizResult from "./quiz.results";
-import { buttonCss } from "./quiz.styles";
+import { QUIZ_SHOW_RESULTS } from "../../const";
+import getRandomNumber from "../../utils/getRandomNumber";
+import useLocalStorage from "../../utils/hooks/useLocalStorage";
+import QuizResult from "./results";
+import styles from "./styles";
 
 const QuizAnswers = ({ correct, others }) => {
   const [answers, setAnswers] = useState([]);
   const [isAnswered, setIsAnswered] = useState(false);
   const [answeredOption, setAnsweredOption] = useState("");
   const [showScore, setShowScore] = useState(false);
+  const { getLocalItem, updateStorageVariables } = useLocalStorage();
 
   useEffect(() => {
-    const firstOption = others.splice(getRandom(0, others.length - 1), 1);
-    const secondOption = others.splice(getRandom(0, others.length - 1), 1);
+    const firstOption = others.splice(getRandomNumber(0, others.length - 1), 1);
+    const secondOption = others.splice(
+      getRandomNumber(0, others.length - 1),
+      1
+    );
 
     const { name: firstOptionName } = firstOption[0];
     const { name: secondOptionName } = secondOption[0];
 
     setAnswers(shuffle([firstOptionName, secondOptionName, correct]));
   }, [correct, others]);
+
+  const onAnswerClick = (answer, isCorrectAnswer) => {
+    setIsAnswered(true);
+    setAnsweredOption(answer);
+    updateStorageVariables(isCorrectAnswer);
+
+    if (getLocalItem(QUIZ_SHOW_RESULTS)) {
+      setShowScore(true);
+    }
+  };
 
   if (!!!answers.length) {
     return <div>Loading...</div>;
@@ -34,21 +46,19 @@ const QuizAnswers = ({ correct, others }) => {
   return (
     <Fragment>
       {answers.map((answer, index) => {
+        const isCorrectAnswer = answer === correct;
+
         return (
           <div key={index}>
             <button
               disabled={!!answeredOption}
-              css={buttonCss({
+              css={styles.buttonCss({
                 isAnswered,
                 answeredCorrectly: answeredOption === correct,
                 isCurrentAnswer: answeredOption === answer,
-                highlightCorrectAnswer: answer === correct,
+                highlightCorrectAnswer: isCorrectAnswer,
               })}
-              onClick={() => {
-                setIsAnswered(true);
-                setAnsweredOption(answer);
-                updateStorageVariables({ answer, correct, setShowScore });
-              }}
+              onClick={() => onAnswerClick(answer, isCorrectAnswer)}
             >
               {answer}
             </button>

@@ -3,20 +3,15 @@ import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 import { useState } from "react";
 
-import { QUIZ_QUESTIONS_COUNT } from "../const";
-import { buttonBasicCss, resultContainerCss } from "./quiz.styles";
-import {
-  resultsCloseCss,
-  resultsContentCss,
-  resultsOverlayCss,
-} from "./quiz.styles";
+import { QUIZ_QUESTIONS_NUMBER } from "../../const";
+import styles from "./styles";
 
 const QuizResult = ({ score }) => {
   const [showScoreModal, setShowScoreModal] = useState(false);
-  const congratsResultMsg = `You've correctly answered ${score} out of ${QUIZ_QUESTIONS_COUNT} flags!`;
+  const congratsResultMsg = `You've correctly answered ${score} out of ${QUIZ_QUESTIONS_NUMBER} flags!`;
 
   return (
-    <div css={resultContainerCss}>
+    <div css={styles.resultContainerCss}>
       <h2>Quiz results</h2>
       <p>{congratsResultMsg}</p>
       <p>
@@ -30,19 +25,22 @@ const QuizResult = ({ score }) => {
           👏🏻
         </span>
       </p>
-      <button css={buttonBasicCss} onClick={() => setShowScoreModal(true)}>
+      <button
+        css={styles.buttonBasicCss}
+        onClick={() => setShowScoreModal(true)}
+      >
         Receive congratulations
       </button>
       {showScoreModal && (
-        <div css={resultsOverlayCss}>
-          <div css={resultsContentCss}>
+        <div css={styles.resultsOverlayCss}>
+          <div css={styles.resultsContentCss}>
             <img
               width="400px"
               src="https://i.imgflip.com/40rmc6.jpg"
               alt="Hope you learned some new flags"
             />
           </div>
-          <Link to="/" css={resultsCloseCss}>
+          <Link to="/" css={styles.resultsCloseCss}>
             X
           </Link>
         </div>

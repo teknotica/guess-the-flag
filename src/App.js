@@ -1,8 +1,8 @@
 import { Link, Router } from "@reach/router";
 import React, { Fragment, useState } from "react";
 
-import { Quiz } from "./components/quiz";
-import { Regions } from "./components/regions";
+import Quiz from "./components/quiz";
+import Regions from "./components/regions";
 
 const regionsList = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
