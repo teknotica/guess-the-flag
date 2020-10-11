@@ -1,16 +1,14 @@
 /** @jsx jsx */	
 import { jsx } from '@emotion/core';
-import { useState } from 'react';
 import { Link } from "@reach/router"
+import { useState } from 'react';
 
 import { QUIZ_QUESTIONS_COUNT } from '../const';
 import { buttonBasicCss, resultContainerCss } from './quiz.styles';
-
 import { 
-    resultsOverlayCss, 
+    resultsCloseCss, 
     resultsContentCss, 
-    resultsCloseCss 
-} from './quiz.styles';
+    resultsOverlayCss} from './quiz.styles';
 
 const QuizResult = ({ score }) =>  {
     const [showScoreModal, setShowScoreModal] = useState(false);

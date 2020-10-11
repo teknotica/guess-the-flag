@@ -20,7 +20,13 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "plugins": ["simple-import-sort"],
+    "rules": {
+      "sort-imports": "off",
+      "import/order": "off",
+      "simple-import-sort/sort": "error"
+    }
   },
   "browserslist": {
     "production": [
@@ -33,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-simple-import-sort": "^5.0.3"
   }
 }

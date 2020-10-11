@@ -1,18 +1,16 @@
 /** @jsx jsx */	
 import { jsx } from '@emotion/core';
-import { useEffect, useCallback, useState } from 'react';
 import { Link } from "@reach/router"
 import shuffle from 'knuth-shuffle-seeded'
+import { useCallback, useEffect, useState } from 'react';
 
-import QuizAnswers from './quiz.answers';
 import { API_URL, QUIZ_QUESTIONS_COUNT } from '../const';
-
+import QuizAnswers from './quiz.answers';
 import { 
-    quizWrapperCss, 
-    quizItemCss, 
+    backLinkCss, 
     quizFlagCss, 
-    backLinkCss 
-} from './quiz.styles';
+    quizItemCss, 
+    quizWrapperCss} from './quiz.styles';
 
 export const Quiz = ({ region, regionFlags, setRegionFlags }) => {
     const [loading, setLoading] = useState(true);
