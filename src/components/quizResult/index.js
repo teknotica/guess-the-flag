@@ -9,12 +9,11 @@ import styles from "./styles";
 
 const QuizResult = ({ score }) => {
   const [showScoreModal, setShowScoreModal] = useState(false);
-  const congratsResultMsg = `You've correctly answered ${score} out of ${QUIZ_QUESTIONS_NUMBER} flags!`;
 
   return (
     <div css={styles.resultContainerCss}>
-      <h2>Quiz results</h2>
-      <p>{congratsResultMsg}</p>
+      <h2>Woohoo!</h2>
+      <p>{`You've correctly answered ${score} out of ${QUIZ_QUESTIONS_NUMBER} flags!`}</p>
       <p>
         <img src={publicPath("/images/clap.gif")} alt="Clap" />
         <img src={publicPath("/images/clap.gif")} alt="Clap" />
@@ -24,7 +23,7 @@ const QuizResult = ({ score }) => {
         css={styles.buttonBasicCss}
         onClick={() => setShowScoreModal(true)}
       >
-        Click to receive congratulations!
+        DON'T CLICK HERE!!!
       </button>
       {showScoreModal && (
         <Modal onClose={() => setShowScoreModal(false)}>

@@ -21,6 +21,8 @@ a {
   text-decoration: none;
 }
 
-h1 {
+h1, h2 {
   font-family: 'Ranchers', cursive;
+  color: #ffffff;
+  text-shadow: 2px 2px #5a5959;
 }
