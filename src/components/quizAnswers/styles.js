@@ -17,6 +17,7 @@ export default {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-font-smoothing: antialiased;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    background: rgb(225, 225, 225);
 
     &:hover,
     &:focus,

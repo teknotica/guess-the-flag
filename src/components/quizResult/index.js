@@ -28,7 +28,6 @@ const QuizResult = ({ score }) => {
       {showScoreModal && (
         <Modal onClose={() => setShowScoreModal(false)}>
           <img
-            width="400px"
             src="https://i.imgflip.com/40rmc6.jpg"
             alt="Hope you learned some new flags"
           />

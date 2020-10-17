@@ -13,8 +13,8 @@ export default {
     background: rgb(238, 174, 202);
     background: radial-gradient(
       circle,
-      rgba(238, 174, 202, 0.8) 0%,
-      rgba(148, 187, 233, 0.8) 100%
+      rgba(238, 174, 202) 0%,
+      rgba(148, 187, 233) 100%
     );
   `,
   modal: css`
@@ -49,5 +49,10 @@ export default {
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 70vh;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   `,
 };
