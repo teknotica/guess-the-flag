@@ -6,7 +6,7 @@ import { Fragment, useEffect, useState } from "react";
 import { QUIZ_SHOW_RESULTS } from "../../const";
 import getRandomNumber from "../../utils/getRandomNumber";
 import useLocalStorage from "../../utils/hooks/useLocalStorage";
-import QuizResult from "./results";
+import QuizResult from "../quizResult";
 import styles from "./styles";
 
 const QuizAnswers = ({ correct, others }) => {

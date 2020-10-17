@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import { Link } from "@reach/router";
 import { useState } from "react";
 
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
+import publicPath from "../../utils/publicPath";
+import Modal from "../modal";
 import styles from "./styles";
 
 const QuizResult = ({ score }) => {
@@ -15,35 +16,24 @@ const QuizResult = ({ score }) => {
       <h2>Quiz results</h2>
       <p>{congratsResultMsg}</p>
       <p>
-        <span role="img" aria-label="clap">
-          👏🏻
-        </span>
-        <span role="img" aria-label="clap">
-          👏🏻
-        </span>
-        <span role="img" aria-label="clap">
-          👏🏻
-        </span>
+        <img src={publicPath("/images/clap.gif")} alt="Clap" />
+        <img src={publicPath("/images/clap.gif")} alt="Clap" />
+        <img src={publicPath("/images/clap.gif")} alt="Clap" />
       </p>
       <button
         css={styles.buttonBasicCss}
         onClick={() => setShowScoreModal(true)}
       >
-        Receive congratulations
+        Click to receive congratulations!
       </button>
       {showScoreModal && (
-        <div css={styles.resultsOverlayCss}>
-          <div css={styles.resultsContentCss}>
-            <img
-              width="400px"
-              src="https://i.imgflip.com/40rmc6.jpg"
-              alt="Hope you learned some new flags"
-            />
-          </div>
-          <Link to="/" css={styles.resultsCloseCss}>
-            X
-          </Link>
-        </div>
+        <Modal onClose={() => setShowScoreModal(false)}>
+          <img
+            width="400px"
+            src="https://i.imgflip.com/40rmc6.jpg"
+            alt="Hope you learned some new flags"
+          />
+        </Modal>
       )}
     </div>
   );

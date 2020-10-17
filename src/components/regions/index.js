@@ -1,19 +1,26 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
-import { Fragment } from "react";
 
+import publicPath from "../../utils/publicPath";
 import styles from "./styles";
 
 const Regions = ({ list }) => (
-  <Fragment>
-    <p>Choose a region to start a quiz!</p>
-    {list.map((region, index) => (
-      <Link key={index} to={`quiz/${region.toLowerCase()}`}>
-        <button css={styles.buttonCss}>{region}</button>
-      </Link>
-    ))}
-  </Fragment>
+  <div css={styles.base}>
+    <img src={publicPath("/images/globe.gif")} alt="Globe" />
+    <h1>Guess the flags of:</h1>
+    <div css={styles.buttons}>
+      {list.map((region, index) => (
+        <Link
+          key={index}
+          to={`quiz/${region.toLowerCase()}`}
+          css={styles.button}
+        >
+          {region}
+        </Link>
+      ))}
+    </div>
+  </div>
 );
 
 export default Regions;

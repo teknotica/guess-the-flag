@@ -5,12 +5,14 @@ import shuffle from "knuth-shuffle-seeded";
 import { useCallback, useEffect, useState } from "react";
 
 import { API_URL, QUIZ_QUESTIONS_NUMBER } from "../../const";
-import QuizAnswers from "./answers";
+import publicPath from "../../utils/publicPath";
+import QuizAnswers from "../quizAnswers";
 import styles from "./styles";
 
 const Quiz = ({ region, regionFlags, setRegionFlags }) => {
   const [loading, setLoading] = useState(true);
   const regionFlagsInStore = !!regionFlags[region];
+  const selectedRegion = region.charAt(0).toUpperCase() + region.slice(1);
 
   // Fetch API for regions from the URL
   const fetchFlags = useCallback(async () => {
@@ -44,9 +46,16 @@ const Quiz = ({ region, regionFlags, setRegionFlags }) => {
   const slicedFlags = shuffleFlags.slice(0, QUIZ_QUESTIONS_NUMBER);
   const otherFlags = shuffleFlags.slice(QUIZ_QUESTIONS_NUMBER + 1);
 
+  const BackLink = () => (
+    <Link to="/" css={styles.backLinkCss}>
+      <img src={publicPath("/images/back.gif")} alt="Back to regions" />
+    </Link>
+  );
+
   return (
     <div css={styles.quizWrapperCss}>
-      <Link to="/" css={styles.backLinkCss}>{`<< Back to regions`}</Link>
+      <h1>Guessing {selectedRegion} flags</h1>
+      <BackLink />
       {slicedFlags.map((item) => (
         <div key={item.alpha2Code} css={styles.quizItemCss}>
           <div css={styles.quizFlagCss(item.flag)}>{item.name}</div>
@@ -55,7 +64,7 @@ const Quiz = ({ region, regionFlags, setRegionFlags }) => {
           )}
         </div>
       ))}
-      <Link to="/" css={styles.backLinkCss}>{`<< Back to regions`}</Link>
+      <BackLink />
     </div>
   );
 };
