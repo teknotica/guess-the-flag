@@ -1,4 +1,4 @@
 # Guess the flag
-Little quiz app for my nephew and niece 🐻
+How many country flags can you guess? 🇲🇷 🇹🇩 🇹🇼 🇻🇪 🇬🇧
 
 https://guess-the-flag.netlify.app/
