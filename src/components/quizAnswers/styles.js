@@ -9,7 +9,7 @@ export default {
   }) => css`
     border: none;
     width: 300px;
-    height: 40px;
+    height: 50px;
     font-size: 18px;
     font-family: "Ropa Sans", sans-serif;
     cursor: pointer;

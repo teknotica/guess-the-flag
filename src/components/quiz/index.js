@@ -9,17 +9,15 @@ import publicPath from "../../utils/publicPath";
 import QuizAnswers from "../quizAnswers";
 import styles from "./styles";
 
-const Quiz = ({ region, regionFlags, setRegionFlags }) => {
+const Quiz = ({ region }) => {
   const [loading, setLoading] = useState(true);
-  const regionFlagsInStore = !!regionFlags[region];
+  const [regionFlags, setRegionFlags] = useState();
   const selectedRegion = region.charAt(0).toUpperCase() + region.slice(1);
 
-  // Fetch API for regions from the URL
   const fetchFlags = useCallback(async () => {
     fetch(`${API_URL}/${region}`)
       .then((resp) => resp.json())
       .then((data) => {
-        // Add fetched region flags in state
         setRegionFlags({ ...regionFlags, ...{ [region]: data } });
         setLoading(false);
       });
@@ -29,16 +27,15 @@ const Quiz = ({ region, regionFlags, setRegionFlags }) => {
     sessionStorage.setItem("quiz_answered_counter", 0);
     sessionStorage.setItem("quiz_result", 0);
 
-    // If region flags are not in the state fetch and save
-    if (!regionFlagsInStore) {
+    if (!regionFlags) {
       fetchFlags();
     }
     return () => {
       sessionStorage.clear();
     };
-  }, [fetchFlags, region, regionFlagsInStore]);
+  }, [fetchFlags, region, regionFlags]);
 
-  if (loading && !regionFlagsInStore) {
+  if (loading && !regionFlags) {
     return <div>Loading flags...</div>;
   }
 
