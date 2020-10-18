@@ -10,7 +10,7 @@ import QuizAnswers from "../quizAnswers";
 import styles from "./styles";
 
 const Quiz = ({ region }) => {
-  const [loading, setLoading] = useState(true);
+  const [hasLoaded, setHasLoaded] = useState(false);
   const [regionFlags, setRegionFlags] = useState();
   const selectedRegionTitle = () => {
     const suffix = region.charAt(region.length - 1) === "s" ? "'" : "'s";
@@ -22,7 +22,10 @@ const Quiz = ({ region }) => {
       .then((resp) => resp.json())
       .then((data) => {
         setRegionFlags({ ...regionFlags, ...{ [region]: data } });
-        setLoading(false);
+        setHasLoaded(true);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, [region, regionFlags, setRegionFlags]);
 
@@ -38,8 +41,8 @@ const Quiz = ({ region }) => {
     };
   }, [fetchFlags, region, regionFlags]);
 
-  if (loading && !regionFlags) {
-    return <div>Loading flags...</div>;
+  if (!hasLoaded) {
+    return <img src={publicPath("/images/loading.gif")} alt="Loading" />;
   }
 
   const shuffleFlags = shuffle(regionFlags[region]);
