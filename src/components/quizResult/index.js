@@ -12,13 +12,9 @@ const QuizResult = ({ score }) => {
   return (
     <div css={styles.resultContainer}>
       <div css={styles.resultTitle}>
-        <img src={publicPath("/images/clap.gif")} alt="Clap" />
-        <h2>Woohoo!</h2>
-        <img src={publicPath("/images/clap.gif")} alt="Clap" />
+        <h2>Your result</h2>
       </div>
-      <p>
-        {`You've answered correctly ${score} out of ${QUIZ_QUESTIONS_NUMBER} flags!`}
-      </p>
+      <p>{`${score} out of ${QUIZ_QUESTIONS_NUMBER} correct flags`}</p>
       <button css={styles.buttonBasic} onClick={() => setShowMeme(true)}>
         DON'T CLICK HERE!!!
       </button>

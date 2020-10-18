@@ -8,6 +8,7 @@ export default {
     bottom: 0;
     position: fixed;
     overflow: hidden;
+    padding: 1rem;
     z-index: 10;
     background: rgb(238, 174, 202);
     background: radial-gradient(
