@@ -11,7 +11,7 @@ const QuizResult = ({ score }) => {
   const [showScoreModal, setShowScoreModal] = useState(false);
 
   return (
-    <div css={styles.resultContainerCss}>
+    <div css={styles.resultContainer}>
       <h2>Woohoo!</h2>
       <p>{`You've correctly answered ${score} out of ${QUIZ_QUESTIONS_NUMBER} flags!`}</p>
       <p>
@@ -19,10 +19,7 @@ const QuizResult = ({ score }) => {
         <img src={publicPath("/images/clap.gif")} alt="Clap" />
         <img src={publicPath("/images/clap.gif")} alt="Clap" />
       </p>
-      <button
-        css={styles.buttonBasicCss}
-        onClick={() => setShowScoreModal(true)}
-      >
+      <button css={styles.buttonBasic} onClick={() => setShowScoreModal(true)}>
         DON'T CLICK HERE!!!
       </button>
       {showScoreModal && (

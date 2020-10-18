@@ -1,7 +1,7 @@
 import { css } from "@emotion/core";
 
 export default {
-  buttonCss: ({
+  button: ({
     isAnswered,
     isCurrentAnswer,
     answeredCorrectly,
@@ -37,9 +37,5 @@ export default {
       background: #79c979;
       color: white;
     `};
-  `,
-
-  resultContainerCss: css`
-    margin-top: 30px;
   `,
 };

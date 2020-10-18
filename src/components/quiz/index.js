@@ -50,24 +50,31 @@ const Quiz = ({ region }) => {
   const otherFlags = shuffleFlags.slice(QUIZ_QUESTIONS_NUMBER + 1);
 
   const BackLink = () => (
-    <Link to="/" css={styles.backLinkCss}>
+    <Link to="/" css={styles.backLink}>
       <img src={publicPath("/images/back.gif")} alt="Back to regions" />
     </Link>
   );
 
+  const GotoTopLink = () => (
+    <button css={styles.topLink} onClick={() => window.scrollTo(0, 0)}>
+      <img src={publicPath("/images/top.gif")} alt="Back to regions" />
+    </button>
+  );
+
   return (
-    <div css={styles.quizWrapperCss}>
+    <div css={styles.quizWrapper}>
       <h1>Guessing {selectedRegionTitle()} flags</h1>
       <BackLink />
       {slicedFlags.map((item) => (
-        <div key={item.alpha2Code} css={styles.quizItemCss}>
-          <div css={styles.quizFlagCss(item.flag)}>{item.name}</div>
+        <div key={item.alpha2Code} css={styles.quizItem}>
+          <div css={styles.quizFlag(item.flag)}>{item.name}</div>
           {otherFlags && (
             <QuizAnswers correct={item.name} others={otherFlags} />
           )}
         </div>
       ))}
       <BackLink />
+      <GotoTopLink />
     </div>
   );
 };

@@ -1,21 +1,41 @@
 import { css } from "@emotion/core";
 
 export default {
-  quizWrapperCss: css`
+  quizWrapper: css`
     max-width: 400px;
     margin: auto;
   `,
 
-  backLinkCss: css`
+  backLink: css`
     display: inline-block;
     margin-bottom: 2rem;
   `,
 
-  quizItemCss: css`
+  topLink: css`
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    text-align: left;
+    text-decoration: underline;
+    font: inherit;
+    font-size: inherit;
+    font-weight: 500;
+    cursor: pointer;
+
+    @media screen and (min-width: 670px) {
+      display: block;
+    }
+  `,
+
+  quizItem: css`
     margin-bottom: 3rem;
   `,
 
-  quizFlagCss: (src) => css`
+  quizFlag: (src) => css`
     width: 100%;
     padding-top: 56.25%;
     margin: auto 0 1rem 0;

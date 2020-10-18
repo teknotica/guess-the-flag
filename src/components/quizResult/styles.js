@@ -1,7 +1,7 @@
 import { css } from "@emotion/core";
 
 export default {
-  buttonBasicCss: css`
+  buttonBasic: css`
     width: 300px;
     padding: 8px 0;
     font-size: 15px;
@@ -9,7 +9,7 @@ export default {
     cursor: pointer;
   `,
 
-  resultContainerCss: css`
+  resultContainer: css`
     margin-top: 30px;
   `,
 };

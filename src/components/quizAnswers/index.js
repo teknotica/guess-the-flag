@@ -52,7 +52,7 @@ const QuizAnswers = ({ correct, others }) => {
           <div key={index}>
             <button
               disabled={!!answeredOption}
-              css={styles.buttonCss({
+              css={styles.button({
                 isAnswered,
                 answeredCorrectly: answeredOption === correct,
                 isCurrentAnswer: answeredOption === answer,
