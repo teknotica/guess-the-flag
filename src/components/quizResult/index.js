@@ -4,31 +4,31 @@ import { useState } from "react";
 
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
 import publicPath from "../../utils/publicPath";
-import Modal from "../modal";
 import styles from "./styles";
 
 const QuizResult = ({ score }) => {
-  const [showScoreModal, setShowScoreModal] = useState(false);
+  const [showMeme, setShowMeme] = useState(false);
 
   return (
     <div css={styles.resultContainer}>
-      <h2>Woohoo!</h2>
-      <p>{`You've correctly answered ${score} out of ${QUIZ_QUESTIONS_NUMBER} flags!`}</p>
+      <div css={styles.resultTitle}>
+        <img src={publicPath("/images/clap.gif")} alt="Clap" />
+        <h2>Woohoo!</h2>
+        <img src={publicPath("/images/clap.gif")} alt="Clap" />
+      </div>
       <p>
-        <img src={publicPath("/images/clap.gif")} alt="Clap" />
-        <img src={publicPath("/images/clap.gif")} alt="Clap" />
-        <img src={publicPath("/images/clap.gif")} alt="Clap" />
+        {`You've answered correctly ${score} out of ${QUIZ_QUESTIONS_NUMBER} flags!`}
       </p>
-      <button css={styles.buttonBasic} onClick={() => setShowScoreModal(true)}>
+      <button css={styles.buttonBasic} onClick={() => setShowMeme(true)}>
         DON'T CLICK HERE!!!
       </button>
-      {showScoreModal && (
-        <Modal onClose={() => setShowScoreModal(false)}>
+      {showMeme && (
+        <div css={styles.memeImage}>
           <img
-            src="https://i.imgflip.com/40rmc6.jpg"
+            src={publicPath("/images/meme.png")}
             alt="Hope you learned some new flags"
           />
-        </Modal>
+        </div>
       )}
     </div>
   );

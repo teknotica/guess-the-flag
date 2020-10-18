@@ -8,8 +8,15 @@ export default {
     font-family: "Ropa Sans", sans-serif;
     cursor: pointer;
   `,
-
+  memeImage: css`
+    margin-top: 30px;
+  `,
   resultContainer: css`
     margin-top: 30px;
+  `,
+  resultTitle: css`
+    h2 {
+      display: inline;
+    }
   `,
 };

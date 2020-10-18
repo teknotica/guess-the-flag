@@ -57,7 +57,7 @@ const Quiz = ({ region }) => {
 
   const GotoTopLink = () => (
     <button css={styles.topLink} onClick={() => window.scrollTo(0, 0)}>
-      <img src={publicPath("/images/top.gif")} alt="Back to regions" />
+      <img src={publicPath("/images/top.gif")} alt="Scroll to top" />
     </button>
   );
 

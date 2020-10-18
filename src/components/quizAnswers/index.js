@@ -6,6 +6,8 @@ import { Fragment, useEffect, useState } from "react";
 import { QUIZ_SHOW_RESULTS } from "../../const";
 import getRandomNumber from "../../utils/getRandomNumber";
 import useLocalStorage from "../../utils/hooks/useLocalStorage";
+import publicPath from "../../utils/publicPath";
+import Modal from "../modal";
 import QuizResult from "../quizResult";
 import styles from "./styles";
 
@@ -13,7 +15,8 @@ const QuizAnswers = ({ correct, others }) => {
   const [answers, setAnswers] = useState([]);
   const [isAnswered, setIsAnswered] = useState(false);
   const [answeredOption, setAnsweredOption] = useState("");
-  const [showScore, setShowScore] = useState(false);
+  const [finishedQuiz, setFinishedQuiz] = useState(false);
+  const [showScoreModal, setShowScoreModal] = useState(false);
   const { getLocalItem, updateStorageVariables } = useLocalStorage();
 
   useEffect(() => {
@@ -35,12 +38,20 @@ const QuizAnswers = ({ correct, others }) => {
     updateStorageVariables(isCorrectAnswer);
 
     if (getLocalItem(QUIZ_SHOW_RESULTS)) {
-      setShowScore(true);
+      setFinishedQuiz(true);
+      setTimeout(() => {
+        setShowScoreModal(true);
+      }, 1000);
     }
   };
 
+  const onCloseModal = () => {
+    setShowScoreModal(false);
+    window.scrollTo(0, 0);
+  };
+
   if (!!!answers.length) {
-    return <div>Loading...</div>;
+    return <img src={publicPath("/images/loading.gif")} alt="Loading" />;
   }
 
   return (
@@ -65,7 +76,11 @@ const QuizAnswers = ({ correct, others }) => {
           </div>
         );
       })}
-      {showScore && <QuizResult score={getLocalItem("quiz_result")} />}
+      {finishedQuiz && showScoreModal && (
+        <Modal onClose={onCloseModal}>
+          <QuizResult score={getLocalItem("quiz_result")} />
+        </Modal>
+      )}
     </Fragment>
   );
 };

@@ -6,7 +6,6 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 4rem 2rem 2rem;
     position: fixed;
     overflow: hidden;
     z-index: 10;
@@ -16,6 +15,10 @@ export default {
       rgba(238, 174, 202) 0%,
       rgba(148, 187, 233) 100%
     );
+
+    @media screen and (min-width: 740px) {
+      padding-top: 2rem;
+    }
   `,
   modal: css`
     position: relative;
@@ -48,7 +51,6 @@ export default {
   content: css`
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 70vh;
 
     img {
       max-width: 100%;
