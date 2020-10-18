@@ -12,7 +12,10 @@ import styles from "./styles";
 const Quiz = ({ region }) => {
   const [loading, setLoading] = useState(true);
   const [regionFlags, setRegionFlags] = useState();
-  const selectedRegion = region.charAt(0).toUpperCase() + region.slice(1);
+  const selectedRegionTitle = () => {
+    const suffix = region.charAt(region.length - 1) === "s" ? "'" : "'s";
+    return region.charAt(0).toUpperCase() + region.slice(1) + suffix;
+  };
 
   const fetchFlags = useCallback(async () => {
     fetch(`${API_URL}/${region}`)
@@ -51,7 +54,7 @@ const Quiz = ({ region }) => {
 
   return (
     <div css={styles.quizWrapperCss}>
-      <h1>Guessing {selectedRegion} flags</h1>
+      <h1>Guessing {selectedRegionTitle()} flags</h1>
       <BackLink />
       {slicedFlags.map((item) => (
         <div key={item.alpha2Code} css={styles.quizItemCss}>
