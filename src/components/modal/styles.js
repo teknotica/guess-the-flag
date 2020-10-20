@@ -10,12 +10,17 @@ export default {
     overflow: hidden;
     padding: 1rem;
     z-index: 10;
-    background: rgb(238, 174, 202);
-    background: radial-gradient(
-      circle,
-      rgba(238, 174, 202) 0%,
-      rgba(148, 187, 233) 100%
-    );
+    background: #00f260; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #0575e6,
+      #00f260
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #0575e6,
+      #00f260
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     @media screen and (min-width: 740px) {
       padding-top: 2rem;
