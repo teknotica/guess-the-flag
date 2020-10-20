@@ -4,11 +4,16 @@ export default {
   quizWrapper: css`
     max-width: 400px;
     margin: auto;
+    padding-top: 60px;
+
+    @media screen and (min-width: 670px) {
+      padding-top: 40px;
+    }
   `,
 
   backLink: css`
     display: inline-block;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   `,
 
   topLink: css`

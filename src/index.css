@@ -1,7 +1,19 @@
 html,
 body,
-#root {
+#root,
+.main {
   height: 100%;
+}
+
+.main {
+  position: relative;
+}
+
+.header {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 16px;
 }
 
 body {
@@ -17,12 +29,21 @@ body {
   font-size: 20px;
 }
 
-a {
+a,
+a:visited,
+a:focus {
   text-decoration: none;
+  color: #000000;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #1a76e5;
 }
 
 h1, h2 {
   font-family: 'Ranchers', cursive;
   color: #ffffff;
   text-shadow: 2px 2px #5a5959;
+  margin-top: 0;
 }

@@ -3,7 +3,7 @@ import { css } from "@emotion/core";
 export default {
   base: css`
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   `,
