@@ -36,18 +36,31 @@ export default {
     }
   `,
 
-  quizItem: css`
+  quizItem: (progress) => css`
+    position: relative;
     margin-bottom: 3rem;
+    border-top: 8px solid #00f260;
+    background-color: rgb(207 196 182 / 50%);
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 0;
+      width: ${progress}%;
+      height: 8px;
+      background-color: #0575e6;
+      z-index: 100;
+    }
   `,
 
   quizFlag: (src) => css`
     width: 100%;
     padding-top: 56.25%;
-    margin: auto 0 1rem 0;
+    margin: auto;
     ${src && `background: url(${src}) 0 0 no-repeat`};
     background-size: cover;
-    background-position: 50% 50%;
+    background-position: 0 0;
     text-indent: -9999px;
-    border: 1px solid #f3f3f3;
   `,
 };

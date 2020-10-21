@@ -15,7 +15,6 @@ const QuizAnswers = ({ correct, others }) => {
   const [answers, setAnswers] = useState([]);
   const [isAnswered, setIsAnswered] = useState(false);
   const [answeredOption, setAnsweredOption] = useState("");
-  const [finishedQuiz, setFinishedQuiz] = useState(false);
   const [showScoreModal, setShowScoreModal] = useState(false);
   const {
     getLocalItem,
@@ -44,7 +43,6 @@ const QuizAnswers = ({ correct, others }) => {
     const answered = getAnsweredCount();
 
     if (answered === QUIZ_QUESTIONS_NUMBER) {
-      setFinishedQuiz(true);
       setTimeout(() => {
         setShowScoreModal(true);
       }, 1000);
@@ -61,33 +59,32 @@ const QuizAnswers = ({ correct, others }) => {
   }
 
   return (
-    <Fragment>
+    <div css={styles.answerWrapper}>
       {answers.map((answer, index) => {
         const isCorrectAnswer = answer === correct;
 
         return (
-          <div key={index}>
-            <button
-              disabled={!!answeredOption}
-              css={styles.button({
-                isAnswered,
-                answeredCorrectly: answeredOption === correct,
-                isCurrentAnswer: answeredOption === answer,
-                highlightCorrectAnswer: isCorrectAnswer,
-              })}
-              onClick={() => onAnswerClick(answer, isCorrectAnswer)}
-            >
-              {answer}
-            </button>
-          </div>
+          <button
+            key={index}
+            disabled={!!answeredOption}
+            css={styles.button({
+              isAnswered,
+              answeredCorrectly: answeredOption === correct,
+              isCurrentAnswer: answeredOption === answer,
+              highlightCorrectAnswer: isCorrectAnswer,
+            })}
+            onClick={() => onAnswerClick(answer, isCorrectAnswer)}
+          >
+            {answer}
+          </button>
         );
       })}
-      {finishedQuiz && showScoreModal && (
+      {showScoreModal && (
         <Modal onClose={onCloseModal}>
           <QuizResult score={getLocalItem("quiz_result")} />
         </Modal>
       )}
-    </Fragment>
+    </div>
   );
 };
 

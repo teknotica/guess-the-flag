@@ -5,6 +5,7 @@ import shuffle from "knuth-shuffle-seeded";
 import { useCallback, useEffect, useState } from "react";
 
 import { API_URL, QUIZ_QUESTIONS_NUMBER } from "../../const";
+import useLocalStorage from "../../utils/hooks/useLocalStorage";
 import publicPath from "../../utils/publicPath";
 import QuizAnswers from "../quizAnswers";
 import styles from "./styles";
@@ -16,6 +17,7 @@ const Quiz = ({ region }) => {
     const suffix = region.charAt(region.length - 1) === "s" ? "'" : "'s";
     return region.charAt(0).toUpperCase() + region.slice(1) + suffix;
   };
+  const { setLocalItem } = useLocalStorage();
 
   const fetchFlags = useCallback(async () => {
     fetch(`${API_URL}/${region}`)
@@ -30,8 +32,8 @@ const Quiz = ({ region }) => {
   }, [region, regionFlags, setRegionFlags]);
 
   useEffect(() => {
-    sessionStorage.setItem("quiz_answered_counter", 0);
-    sessionStorage.setItem("quiz_result", 0);
+    setLocalItem("quiz_answered_counter", 0);
+    setLocalItem("quiz_result", 0);
 
     if (!regionFlags) {
       fetchFlags();
@@ -39,7 +41,7 @@ const Quiz = ({ region }) => {
     return () => {
       sessionStorage.clear();
     };
-  }, [fetchFlags, region, regionFlags]);
+  }, [fetchFlags, region, regionFlags, setLocalItem]);
 
   if (!hasLoaded) {
     return <img src={publicPath("/images/loading.gif")} alt="Loading" />;
@@ -61,12 +63,18 @@ const Quiz = ({ region }) => {
     </button>
   );
 
+  const calculateProgress = (index) =>
+    ((index + 1) * 100) / QUIZ_QUESTIONS_NUMBER;
+
   return (
     <div css={styles.quizWrapper}>
       <h1>Guessing {selectedRegionTitle()} flags</h1>
       <BackLink />
-      {slicedFlags.map((item) => (
-        <div key={item.alpha2Code} css={styles.quizItem}>
+      {slicedFlags.map((item, index) => (
+        <div
+          key={item.alpha2Code}
+          css={styles.quizItem(calculateProgress(index))}
+        >
           <div css={styles.quizFlag(item.flag)}>{item.name}</div>
           {otherFlags && (
             <QuizAnswers correct={item.name} others={otherFlags} />

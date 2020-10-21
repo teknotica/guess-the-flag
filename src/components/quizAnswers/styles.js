@@ -1,6 +1,9 @@
 import { css } from "@emotion/core";
 
 export default {
+  answerWrapper: css`
+    padding: 30px 0;
+  `,
   button: ({
     isAnswered,
     isCurrentAnswer,
@@ -18,6 +21,10 @@ export default {
     -webkit-font-smoothing: antialiased;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     background: rgb(225, 225, 225);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     &:hover,
     &:focus,
