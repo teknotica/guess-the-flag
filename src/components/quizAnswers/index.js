@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import shuffle from "knuth-shuffle-seeded";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
 import getRandomNumber from "../../utils/getRandomNumber";
