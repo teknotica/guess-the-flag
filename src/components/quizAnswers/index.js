@@ -3,7 +3,7 @@ import { jsx } from "@emotion/core";
 import shuffle from "knuth-shuffle-seeded";
 import { Fragment, useEffect, useState } from "react";
 
-import { QUIZ_SHOW_RESULTS } from "../../const";
+import { QUIZ_QUESTIONS_NUMBER } from "../../const";
 import getRandomNumber from "../../utils/getRandomNumber";
 import useLocalStorage from "../../utils/hooks/useLocalStorage";
 import publicPath from "../../utils/publicPath";
@@ -17,7 +17,11 @@ const QuizAnswers = ({ correct, others }) => {
   const [answeredOption, setAnsweredOption] = useState("");
   const [finishedQuiz, setFinishedQuiz] = useState(false);
   const [showScoreModal, setShowScoreModal] = useState(false);
-  const { getLocalItem, updateStorageVariables } = useLocalStorage();
+  const {
+    getLocalItem,
+    getAnsweredCount,
+    increaseResultVariables,
+  } = useLocalStorage();
 
   useEffect(() => {
     const firstOption = others.splice(getRandomNumber(0, others.length - 1), 1);
@@ -35,9 +39,11 @@ const QuizAnswers = ({ correct, others }) => {
   const onAnswerClick = (answer, isCorrectAnswer) => {
     setIsAnswered(true);
     setAnsweredOption(answer);
-    updateStorageVariables(isCorrectAnswer);
+    increaseResultVariables(isCorrectAnswer);
 
-    if (getLocalItem(QUIZ_SHOW_RESULTS)) {
+    const answered = getAnsweredCount();
+
+    if (answered === QUIZ_QUESTIONS_NUMBER) {
       setFinishedQuiz(true);
       setTimeout(() => {
         setShowScoreModal(true);
