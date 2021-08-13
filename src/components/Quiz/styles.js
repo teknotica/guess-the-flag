@@ -11,31 +11,6 @@ export default {
     }
   `,
 
-  backLink: css`
-    display: inline-block;
-    margin-bottom: 1rem;
-  `,
-
-  topLink: css`
-    display: none;
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    background: transparent;
-    border: none;
-    padding: 0;
-    text-align: left;
-    text-decoration: underline;
-    font: inherit;
-    font-size: inherit;
-    font-weight: 500;
-    cursor: pointer;
-
-    @media screen and (min-width: 670px) {
-      display: block;
-    }
-  `,
-
   quizItem: (progress) => css`
     position: relative;
     margin-bottom: 3rem;

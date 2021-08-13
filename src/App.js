@@ -2,9 +2,9 @@ import { Router } from "@reach/router";
 import React from "react";
 import { Fragment } from "react";
 
-import Header from "./components/header";
-import Quiz from "./components/quiz";
-import Regions from "./components/regions";
+import Header from "./components/Header";
+import Quiz from "./components/Quiz";
+import Regions from "./components/Regions";
 
 const regionsList = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 

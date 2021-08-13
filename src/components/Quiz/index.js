@@ -1,13 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import { Link } from "@reach/router";
 import shuffle from "knuth-shuffle-seeded";
 import { useCallback, useEffect, useState } from "react";
 
 import { API_URL, QUIZ_QUESTIONS_NUMBER } from "../../const";
 import useLocalStorage from "../../utils/hooks/useLocalStorage";
 import publicPath from "../../utils/publicPath";
-import QuizAnswers from "../quizAnswers";
+import BackLink from "../BackLink";
+import GotoTopLink from "../GotoTopLink";
+import QuizAnswers from "../QuizAnswers";
 import styles from "./styles";
 
 const Quiz = ({ region }) => {
@@ -50,18 +51,6 @@ const Quiz = ({ region }) => {
   const shuffleFlags = shuffle(regionFlags[region]);
   const slicedFlags = shuffleFlags.slice(0, QUIZ_QUESTIONS_NUMBER);
   const otherFlags = shuffleFlags.slice(QUIZ_QUESTIONS_NUMBER + 1);
-
-  const BackLink = () => (
-    <Link to="/" css={styles.backLink}>
-      <img src={publicPath("/images/back.gif")} alt="Back to regions" />
-    </Link>
-  );
-
-  const GotoTopLink = () => (
-    <button css={styles.topLink} onClick={() => window.scrollTo(0, 0)}>
-      <img src={publicPath("/images/top.gif")} alt="Scroll to top" />
-    </button>
-  );
 
   const calculateProgress = (index) =>
     ((index + 1) * 100) / QUIZ_QUESTIONS_NUMBER;

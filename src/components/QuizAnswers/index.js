@@ -7,8 +7,8 @@ import { QUIZ_QUESTIONS_NUMBER } from "../../const";
 import getRandomNumber from "../../utils/getRandomNumber";
 import useLocalStorage from "../../utils/hooks/useLocalStorage";
 import publicPath from "../../utils/publicPath";
-import Modal from "../modal";
-import QuizResult from "../quizResult";
+import Modal from "../Modal";
+import QuizResult from "../QuizResult";
 import styles from "./styles";
 
 const QuizAnswers = ({ correct, others }) => {
@@ -16,11 +16,8 @@ const QuizAnswers = ({ correct, others }) => {
   const [isAnswered, setIsAnswered] = useState(false);
   const [answeredOption, setAnsweredOption] = useState("");
   const [showScoreModal, setShowScoreModal] = useState(false);
-  const {
-    getLocalItem,
-    getAnsweredCount,
-    increaseResultVariables,
-  } = useLocalStorage();
+  const { getLocalItem, getAnsweredCount, increaseResultVariables } =
+    useLocalStorage();
 
   useEffect(() => {
     const firstOption = others.splice(getRandomNumber(0, others.length - 1), 1);
