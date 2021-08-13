@@ -3,7 +3,8 @@ import { jsx } from "@emotion/core";
 import shuffle from "knuth-shuffle-seeded";
 import { useCallback, useEffect, useState } from "react";
 
-import { API_URL, QUIZ_QUESTIONS_NUMBER } from "../../const";
+import { QUIZ_QUESTIONS_NUMBER } from "../../const";
+import { getFlagsByRegion } from "../../services";
 import useLocalStorage from "../../utils/hooks/useLocalStorage";
 import publicPath from "../../utils/publicPath";
 import BackLink from "../BackLink";
@@ -21,15 +22,13 @@ const Quiz = ({ region }) => {
   const { setLocalItem } = useLocalStorage();
 
   const fetchFlags = useCallback(async () => {
-    fetch(`${API_URL}/${region}`)
-      .then((resp) => resp.json())
-      .then((data) => {
-        setRegionFlags({ ...regionFlags, ...{ [region]: data } });
-        setHasLoaded(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const data = await getFlagsByRegion(region);
+      setRegionFlags({ ...regionFlags, ...{ [region]: data } });
+      setHasLoaded(true);
+    } catch (error) {
+      console.log(error);
+    }
   }, [region, regionFlags, setRegionFlags]);
 
   useEffect(() => {
