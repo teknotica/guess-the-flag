@@ -64,7 +64,7 @@ const Quiz = ({ region }) => {
           key={item.alpha2Code}
           css={styles.quizItem(calculateProgress(index))}
         >
-          <div css={styles.quizFlag(item.flag)}>{item.name}</div>
+          <div css={styles.quizFlag(item.flag)} />
           {otherFlags && (
             <QuizAnswers correct={item.name} others={otherFlags} />
           )}

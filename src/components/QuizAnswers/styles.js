@@ -11,6 +11,7 @@ export default {
     highlightCorrectAnswer,
   }) => css`
     border: none;
+    outline: #1a76e5;
     width: 300px;
     height: 50px;
     font-size: 18px;

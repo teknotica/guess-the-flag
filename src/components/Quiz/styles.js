@@ -33,7 +33,7 @@ export default {
     width: 100%;
     padding-top: 56.25%;
     margin: auto;
-    ${src && `background: url(${src}) 0 0 no-repeat`};
+    background: url(${src}) 0 0 no-repeat;
     background-size: cover;
     background-position: 0 0;
     text-indent: -9999px;
