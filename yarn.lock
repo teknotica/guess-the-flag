@@ -11026,6 +11026,11 @@
   "resolved" "https://registry.npmjs.org/websocket-extensions/-/websocket-extensions-0.1.4.tgz"
   "version" "0.1.4"
 
+"what-input@^5.2.10":
+  "integrity" "sha512-7AQoIMGq7uU8esmKniOtZG3A+pzlwgeyFpkS3f/yzRbxknSL68tvn5gjE6bZ4OMFxCPjpaBd2udUTqlZ0HwrXQ=="
+  "resolved" "https://registry.npmjs.org/what-input/-/what-input-5.2.10.tgz"
+  "version" "5.2.10"
+
 "whatwg-encoding@^1.0.1", "whatwg-encoding@^1.0.3", "whatwg-encoding@^1.0.5":
   "integrity" "sha512-b5lim54JOPN9HtzvK9HFXvBma/rnfFeqsic0hSpjtDbVxR3dJKLc+KB4V6GgiGOvl7CY/KNh8rxSo9DKQrnUEw=="
   "resolved" "https://registry.npmjs.org/whatwg-encoding/-/whatwg-encoding-1.0.5.tgz"

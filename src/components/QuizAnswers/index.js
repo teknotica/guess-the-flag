@@ -2,6 +2,7 @@
 import { jsx } from "@emotion/core";
 import shuffle from "knuth-shuffle-seeded";
 import { useEffect, useState } from "react";
+import whatInput from "what-input";
 
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
 import useLocalStorage from "../../hooks/useLocalStorage";
@@ -41,7 +42,9 @@ const QuizAnswers = ({ correct, others, questionIndex }) => {
 
     // Quiz still has unanswered questions
     if (answered !== QUIZ_QUESTIONS_NUMBER) {
-      focusOnQuestion(questionIndex + 1);
+      if (whatInput.ask() === "keyboard") {
+        focusOnQuestion(questionIndex + 1);
+      }
     } else {
       setTimeout(() => {
         setShowScoreModal(true);
