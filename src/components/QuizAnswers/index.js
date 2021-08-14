@@ -4,8 +4,8 @@ import shuffle from "knuth-shuffle-seeded";
 import { useEffect, useState } from "react";
 
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import getRandomNumber from "../../utils/getRandomNumber";
-import useLocalStorage from "../../utils/hooks/useLocalStorage";
 import publicPath from "../../utils/publicPath";
 import Modal from "../Modal";
 import QuizResult from "../QuizResult";

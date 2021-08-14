@@ -4,8 +4,8 @@ import shuffle from "knuth-shuffle-seeded";
 import { useCallback, useEffect, useState } from "react";
 
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import { getFlagsByRegion } from "../../services";
-import useLocalStorage from "../../utils/hooks/useLocalStorage";
 import publicPath from "../../utils/publicPath";
 import BackLink from "../BackLink";
 import GotoTopLink from "../GotoTopLink";

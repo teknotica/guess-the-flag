@@ -1,4 +1,4 @@
-import { QUIZ_ANSWERED_COUNTER, QUIZ_RESULT } from "../../../const";
+import { QUIZ_ANSWERED_COUNTER, QUIZ_RESULT } from "../../const";
 
 const setLocalItem = (item, value) => sessionStorage.setItem(item, value);
 

@@ -13,6 +13,10 @@ export default {
     -webkit-font-smoothing: antialiased;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     background: rgb(225, 225, 225);
+
+    &:focus {
+      border: 2px solid #1a76e5;
+    }
   `,
   memeImage: css`
     margin-top: 30px;

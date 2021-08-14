@@ -53,6 +53,10 @@ export default {
     display: inherit;
     letter-spacing: inherit;
     line-height: inherit;
+
+    &:focus {
+      border: 2px solid #1a76e5;
+    }
   `,
   content: css`
     overflow-y: auto;
