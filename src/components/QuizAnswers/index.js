@@ -6,6 +6,7 @@ import whatInput from "what-input";
 
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { focusOnBackLink } from "../../utils/focusOnBackLink";
 import { focusOnQuestion } from "../../utils/focusOnQuestion";
 import getRandomNumber from "../../utils/getRandomNumber";
 import publicPath from "../../utils/publicPath";
@@ -55,6 +56,7 @@ const QuizAnswers = ({ correct, others, questionIndex }) => {
   const onCloseModal = () => {
     setShowScoreModal(false);
     window.scrollTo(0, 0);
+    focusOnBackLink();
   };
 
   if (!!!answers.length) {

@@ -5,8 +5,8 @@ import { Link } from "@reach/router";
 import publicPath from "../../utils/publicPath";
 import styles from "./styles";
 
-const BackLink = () => (
-  <Link to="/" css={styles.backLink}>
+const BackLink = ({ id }) => (
+  <Link id={id} to="/" css={styles.backLink}>
     <img
       src={publicPath("/images/back.gif")}
       alt="Back to regions"

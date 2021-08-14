@@ -59,7 +59,7 @@ const Quiz = ({ region }) => {
   return (
     <div css={styles.quizWrapper}>
       <h1>Guessing {regionTitle(region)} flags</h1>
-      <BackLink />
+      <BackLink id="top-link" />
       <div id="questions-list">
         {slicedFlags.map((item, index) => (
           <div
@@ -77,7 +77,7 @@ const Quiz = ({ region }) => {
           </div>
         ))}
       </div>
-      <BackLink />
+      <BackLink id="bottom-link" />
       <GotoTopLink />
     </div>
   );
