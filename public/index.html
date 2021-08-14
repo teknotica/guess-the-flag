@@ -40,10 +40,26 @@
 
       gtag('config', 'UA-166186290-1');
     </script>
+    <style>
+      .skip-to-content-link {
+        height: 30px;
+        left: 50%;
+        padding: 5px;
+        position: absolute;
+        transform: translateY(-100%);
+        transition: transform 0.3s;
+      }
 
+      .skip-to-content-link:focus {
+        transform: translateY(0%);
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <a class="skip-to-content-link" href="#main">
+      Skip to content
+    </a>
     <div id="root"></div>
     <div id="modal"></div>
     <!--

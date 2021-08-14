@@ -6,7 +6,7 @@ import publicPath from "../../utils/publicPath";
 import styles from "./styles";
 
 const Regions = ({ list }) => (
-  <div css={styles.base}>
+  <div id="main" css={styles.base}>
     <img src={publicPath("/images/globe.gif")} alt="Globe" />
     <h1>Guess the flags of:</h1>
     <div css={styles.buttons}>

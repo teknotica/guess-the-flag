@@ -5,13 +5,14 @@ import { useEffect, useState } from "react";
 
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { focusOnQuestion } from "../../utils/focusOnQuestion";
 import getRandomNumber from "../../utils/getRandomNumber";
 import publicPath from "../../utils/publicPath";
 import Modal from "../Modal";
 import QuizResult from "../QuizResult";
 import styles from "./styles";
 
-const QuizAnswers = ({ correct, others }) => {
+const QuizAnswers = ({ correct, others, questionIndex }) => {
   const [answers, setAnswers] = useState([]);
   const [isAnswered, setIsAnswered] = useState(false);
   const [answeredOption, setAnsweredOption] = useState("");
@@ -25,7 +26,6 @@ const QuizAnswers = ({ correct, others }) => {
       getRandomNumber(0, others.length - 1),
       1
     );
-
     const { name: firstOptionName } = firstOption[0];
     const { name: secondOptionName } = secondOption[0];
 
@@ -39,10 +39,13 @@ const QuizAnswers = ({ correct, others }) => {
 
     const answered = getAnsweredCount();
 
-    if (answered === QUIZ_QUESTIONS_NUMBER) {
+    // Quiz still has unanswered questions
+    if (answered !== QUIZ_QUESTIONS_NUMBER) {
+      focusOnQuestion(questionIndex + 1);
+    } else {
       setTimeout(() => {
         setShowScoreModal(true);
-      }, 1000);
+      }, 800);
     }
   };
 

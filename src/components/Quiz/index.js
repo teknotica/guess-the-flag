@@ -6,6 +6,8 @@ import { useCallback, useEffect, useState } from "react";
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { getFlagsByRegion } from "../../services";
+import { regionTitle } from "../../transformers/regionTitle";
+import { focusOnQuestion } from "../../utils/focusOnQuestion";
 import publicPath from "../../utils/publicPath";
 import BackLink from "../BackLink";
 import GotoTopLink from "../GotoTopLink";
@@ -15,10 +17,6 @@ import styles from "./styles";
 const Quiz = ({ region }) => {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [regionFlags, setRegionFlags] = useState();
-  const selectedRegionTitle = () => {
-    const suffix = region.charAt(region.length - 1) === "s" ? "'" : "'s";
-    return region.charAt(0).toUpperCase() + region.slice(1) + suffix;
-  };
   const { setLocalItem } = useLocalStorage();
 
   const fetchFlags = useCallback(async () => {
@@ -43,6 +41,10 @@ const Quiz = ({ region }) => {
     };
   }, [fetchFlags, region, regionFlags, setLocalItem]);
 
+  useEffect(() => {
+    focusOnQuestion(0);
+  }, []);
+
   if (!hasLoaded) {
     return <img src={publicPath("/images/loading.gif")} alt="Loading" />;
   }
@@ -56,19 +58,25 @@ const Quiz = ({ region }) => {
 
   return (
     <div css={styles.quizWrapper}>
-      <h1>Guessing {selectedRegionTitle()} flags</h1>
+      <h1>Guessing {regionTitle(region)} flags</h1>
       <BackLink />
-      {slicedFlags.map((item, index) => (
-        <div
-          key={item.alpha2Code}
-          css={styles.quizItem(calculateProgress(index))}
-        >
-          <div css={styles.quizFlag(item.flag)} />
-          {otherFlags && (
-            <QuizAnswers correct={item.name} others={otherFlags} />
-          )}
-        </div>
-      ))}
+      <div id="questions-list">
+        {slicedFlags.map((item, index) => (
+          <div
+            key={item.alpha2Code}
+            css={styles.quizItem(calculateProgress(index))}
+          >
+            <div css={styles.quizFlag(item.flag)} />
+            {otherFlags && (
+              <QuizAnswers
+                correct={item.name}
+                others={otherFlags}
+                questionIndex={index}
+              />
+            )}
+          </div>
+        ))}
+      </div>
       <BackLink />
       <GotoTopLink />
     </div>
