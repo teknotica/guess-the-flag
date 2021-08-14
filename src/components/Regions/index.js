@@ -7,7 +7,12 @@ import styles from "./styles";
 
 const Regions = ({ list }) => (
   <div id="main" css={styles.base}>
-    <img src={publicPath("/images/globe.gif")} alt="Globe" />
+    <img
+      src={publicPath("/images/globe.gif")}
+      alt="Globe"
+      width="90"
+      height="70"
+    />
     <h1>Guess the flags of:</h1>
     <div css={styles.buttons}>
       {list.map((region, index) => (
