@@ -11,7 +11,8 @@
     "knuth-shuffle-seeded": "^1.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.3"
+    "react-scripts": "^3.4.3",
+    "what-input": "^5.2.10"
   },
   "scripts": {
     "start": "react-scripts start",
