@@ -15,10 +15,9 @@
     "what-input": "^5.2.10"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom"
   },
   "eslintConfig": {
     "extends": "react-app",
@@ -44,6 +43,9 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-simple-import-sort": "^5.0.3"
+    "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+    "customize-cra": "^1.0.0",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "react-app-rewired": "^2.1.8"
   }
 }
