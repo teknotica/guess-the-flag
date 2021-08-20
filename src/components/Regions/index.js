@@ -1,31 +1,54 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import { Link } from "@reach/router";
+import { useEffect, useMemo } from "react";
+import { Link, useLocation } from "react-router-dom";
 
+import { focusOnElement } from "../../utils/focusOnElement";
 import publicPath from "../../utils/publicPath";
 import styles from "./styles";
 
-const Regions = ({ list }) => (
-  <div id="main" css={styles.base}>
-    <img
-      src={publicPath("/images/globe.gif")}
-      alt="Globe"
-      width="90"
-      height="70"
-    />
-    <h1>Guess the flags of:</h1>
-    <div css={styles.buttons}>
-      {list.map((region, index) => (
-        <Link
-          key={index}
-          to={`quiz/${region.toLowerCase()}`}
-          css={styles.button}
-        >
-          {region}
-        </Link>
-      ))}
+const Regions = ({ list }) => {
+  const location = useLocation();
+  const firstRegionId = useMemo(() => {
+    const region = list[0];
+    return region.toLowerCase();
+  }, [list]);
+
+  useEffect(() => {
+    const { hash } = location;
+    // Skip to content has been clicked
+    // Focus on first region option
+    if (hash === "#main") {
+      focusOnElement(firstRegionId);
+    }
+  }, [firstRegionId, location]);
+
+  return (
+    <div id="main" css={styles.base}>
+      <img
+        src={publicPath("/images/globe.gif")}
+        alt="Globe"
+        width="90"
+        height="70"
+      />
+      <h1>Guess the flags of:</h1>
+      <div css={styles.buttons}>
+        {list.map((region, index) => {
+          const regionLabel = region.toLowerCase();
+          return (
+            <Link
+              id={regionLabel}
+              key={index}
+              to={`/quiz/${regionLabel}`}
+              css={styles.button}
+            >
+              {region}
+            </Link>
+          );
+        })}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Regions;

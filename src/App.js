@@ -1,6 +1,5 @@
-import { Router } from "@reach/router";
 import React from "react";
-import { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Header from "./components/Header";
 import Quiz from "./components/Quiz";
@@ -10,13 +9,17 @@ const regionsList = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
 const App = () => {
   return (
-    <Fragment>
+    <Router>
       <Header />
-      <Router primary={false}>
-        <Regions list={regionsList} path="/" />
-        <Quiz path="quiz/:region" />
-      </Router>
-    </Fragment>
+      <Switch>
+        <Route path="/quiz/:region">
+          <Quiz />
+        </Route>
+        <Route path="/">
+          <Regions list={regionsList} />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 
