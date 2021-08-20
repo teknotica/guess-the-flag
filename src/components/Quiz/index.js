@@ -2,6 +2,7 @@
 import { jsx } from "@emotion/core";
 import shuffle from "knuth-shuffle-seeded";
 import { useCallback, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
 import useLocalStorage from "../../hooks/useLocalStorage";
@@ -14,7 +15,8 @@ import GotoTopLink from "../GotoTopLink";
 import QuizAnswers from "../QuizAnswers";
 import styles from "./styles";
 
-const Quiz = ({ region }) => {
+const Quiz = () => {
+  const { region } = useParams();
   const [hasLoaded, setHasLoaded] = useState(false);
   const [regionFlags, setRegionFlags] = useState();
   const { setLocalItem } = useLocalStorage();
@@ -27,7 +29,7 @@ const Quiz = ({ region }) => {
     } catch (error) {
       console.log(error);
     }
-  }, [region, regionFlags, setRegionFlags]);
+  }, [region, regionFlags]);
 
   useEffect(() => {
     setLocalItem("quiz_answered_counter", 0);
@@ -39,7 +41,7 @@ const Quiz = ({ region }) => {
     return () => {
       sessionStorage.clear();
     };
-  }, [fetchFlags, region, regionFlags, setLocalItem]);
+  }, [fetchFlags, regionFlags, setLocalItem]);
 
   useEffect(() => {
     focusOnQuestion(0);
