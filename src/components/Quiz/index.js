@@ -19,13 +19,20 @@ const Quiz = () => {
   const { region } = useParams();
   const [hasLoaded, setHasLoaded] = useState(false);
   const [regionFlags, setRegionFlags] = useState();
+  const [errorFetching, setErrorFetching] = useState(false);
   const { setLocalItem } = useLocalStorage();
 
   const fetchFlags = useCallback(async () => {
     try {
       const data = await getFlagsByRegion(region);
-      setRegionFlags({ ...regionFlags, ...{ [region]: data } });
-      setHasLoaded(true);
+      const { error } = data;
+
+      if (error) {
+        setErrorFetching(true);
+      } else {
+        setRegionFlags({ ...regionFlags, ...{ [region]: data } });
+        setHasLoaded(true);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -46,6 +53,10 @@ const Quiz = () => {
   useEffect(() => {
     focusOnQuestion(0);
   }, []);
+
+  if (errorFetching) {
+    return <div>There was an error fetching the countries</div>;
+  }
 
   if (!hasLoaded) {
     return <img src={publicPath("/images/loading.gif")} alt="Loading" />;
@@ -68,7 +79,7 @@ const Quiz = () => {
             key={item.alpha2Code}
             css={styles.quizItem(calculateProgress(index))}
           >
-            <div css={styles.quizFlag(item.flag)} />
+            <div css={styles.quizFlag(item.alpha2Code.toLowerCase())} />
             {otherFlags && (
               <QuizAnswers
                 correct={item.name}

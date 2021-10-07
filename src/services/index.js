@@ -1,5 +1,9 @@
-import { API_URL } from "../const";
+import publicPath from "../utils/publicPath";
 
-export const getFlagsByRegion = async (region) => {
-  return fetch(`${API_URL}/${region}`).then((resp) => resp.json());
+export const getFlagsByRegion = (region) => {
+  const filePath = publicPath(`/data/${region}.json`);
+
+  return fetch(filePath).then((resp) => {
+    return resp.json();
+  });
 };

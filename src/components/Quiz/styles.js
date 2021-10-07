@@ -29,13 +29,13 @@ export default {
     }
   `,
 
-  quizFlag: (src) => css`
+  quizFlag: (countryCode) => css`
     width: 100%;
     padding-top: 56.25%;
     margin: auto;
-    background: url(${src}) 0 0 no-repeat;
-    background-size: cover;
-    background-position: 0 0;
+    background: url("https://flagcdn.com/160x120/${countryCode}.png") 0 0
+      no-repeat;
+    background-position: center;
     text-indent: -9999px;
   `,
 };

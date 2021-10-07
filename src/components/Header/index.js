@@ -6,8 +6,8 @@ import styles from "./styles";
 const Header = () => (
   <header css={styles.header}>
     <span>Powered by </span>
-    <a href="https://restcountries.eu/" target="blank">
-      REST Countries API
+    <a href="https://flagcdn.com/" target="blank">
+      Flag CDN
     </a>
     <span> / </span>
     <a href="https://twitter.com/teknotica" target="blank">
