@@ -10,26 +10,16 @@ export default {
     overflow: hidden;
     padding: 1rem;
     z-index: 10;
-    background: #00f260; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to right,
-      #0575e6,
-      #00f260
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to right,
-      #0575e6,
-      #00f260
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: #00f260;
+    background: linear-gradient(to right, rgb(5 117 230 / 70%), #00f260);
     @media screen and (min-width: 740px) {
       padding-top: 2rem;
     }
   `,
   modal: css`
     position: relative;
-    padding: 0 1.2rem 2rem;
-    background: rgb(198 208 230 / 55%);
+    padding: 2rem;
+    background: rgb(222 222 222 / 80%);
     border-radius: 5px;
     max-width: 700px;
     margin: auto;

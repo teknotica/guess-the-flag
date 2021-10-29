@@ -5,7 +5,7 @@ export default {
     border: none;
     width: 280px;
     height: 50px;
-    font-size: 18px;
+    font-size: 14px;
     font-family: "Ropa Sans", sans-serif;
     cursor: pointer;
     margin-bottom: 10px;
@@ -21,12 +21,8 @@ export default {
   memeImage: css`
     margin-top: 30px;
   `,
-  resultContainer: css`
-    margin-top: 30px;
-  `,
   resultTitle: css`
-    h2 {
-      display: inline;
-    }
+    display: inline;
+    font-size: 2em;
   `,
 };
