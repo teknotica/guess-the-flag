@@ -19,7 +19,7 @@ const QuizResult = ({ score }) => {
         onClick={() => setShowMeme(true)}
         disabled={showMeme}
       >
-        Show me a MEME
+        Don't click here...
       </button>
       {showMeme && (
         <div css={styles.memeImage}>

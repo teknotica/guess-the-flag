@@ -61,7 +61,7 @@ const QuizAnswers = ({ correct, others, questionIndex }) => {
     focusOnElement("top-link");
   };
 
-  if (!!!answers.length) {
+  if (!answers.length) {
     return <img src={publicPath("/images/loading.gif")} alt="Loading" />;
   }
 
