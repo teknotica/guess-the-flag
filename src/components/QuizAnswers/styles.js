@@ -27,23 +27,37 @@ export default {
       margin-bottom: 0;
     }
 
-    &:hover,
-    &:focus,
-    &:active {
+    &:not([disabled]):focus,
+    &:not([disabled]):active {
       border: 2px solid #1a76e5;
+      background-color: #d0cdcd;
+    }
+
+    &:not([disabled]):hover {
+      background-color: #d0cdcd;
     }
 
     ${isAnswered &&
     isCurrentAnswer &&
     css`
-      background: ${answeredCorrectly ? "#79c979" : "#d73b0a"};
-      color: white;
+      ${answeredCorrectly ? correctAnswer : incorrectAnswer};
     `};
+
     ${isAnswered &&
     highlightCorrectAnswer &&
     css`
-      background: #79c979;
-      color: white;
+      background: #57e157;
+      color: black;
     `};
   `,
 };
+
+const correctAnswer = `
+  background: #57e157;
+  color: black;
+`;
+
+const incorrectAnswer = `
+  background: #AE192D;
+  color: white;
+`;

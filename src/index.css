@@ -20,22 +20,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background: #00F260;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
   font-size: 20px;
+  background: linear-gradient(to right,#f648d2,#0bf7e6);
 }
 
 a,
+a:hover,
 a:visited,
 a:focus {
   text-decoration: none;
   color: #000000;
-}
-
-a:hover {
-  color: #1a76e5;
 }
 
 h1, h2 {
