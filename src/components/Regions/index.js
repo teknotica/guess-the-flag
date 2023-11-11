@@ -47,6 +47,9 @@ const Regions = ({ list }) => {
           );
         })}
       </div>
+      <div>
+        <p>Every time it's a different set of flags so keep guessing!</p>
+      </div>
     </div>
   );
 };
