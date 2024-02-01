@@ -17,21 +17,19 @@ import styles from "./styles";
 
 const Quiz = () => {
   const { region } = useParams();
-  const [hasLoaded, setHasLoaded] = useState(false);
+  const [status, setStatus] = useState("loading");
   const [regionFlags, setRegionFlags] = useState();
-  const [errorFetching, setErrorFetching] = useState(false);
   const { setLocalItem } = useLocalStorage();
 
   const fetchFlags = useCallback(async () => {
     try {
       const data = await getFlagsByRegion(region);
-      const { error } = data;
 
-      if (error) {
-        setErrorFetching(true);
-      } else {
+      if (data) {
         setRegionFlags({ ...regionFlags, ...{ [region]: data } });
-        setHasLoaded(true);
+        setStatus("loaded");
+      } else {
+        setStatus("error");
       }
     } catch (error) {
       console.log(error);
@@ -54,11 +52,11 @@ const Quiz = () => {
     focusOnQuestion(0);
   }, []);
 
-  if (errorFetching) {
+  if (status === "error") {
     return <div>There was an error fetching the countries</div>;
   }
 
-  if (!hasLoaded) {
+  if (status === "loading") {
     return <img src={publicPath("/images/loading.gif")} alt="Loading" />;
   }
 

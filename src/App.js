@@ -7,20 +7,17 @@ import Regions from "./components/Regions";
 
 const regionsList = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
-const App = () => {
-  return (
-    <Router>
-      <Header />
-      <Switch>
-        <Route path="/quiz/:region">
-          <Quiz />
-        </Route>
-        <Route path="/">
-          <Regions list={regionsList} />
-        </Route>
-      </Switch>
-    </Router>
-  );
-};
-
+const App = () => (
+  <Router>
+    <Header />
+    <Switch>
+      <Route path="/quiz/:region">
+        <Quiz />
+      </Route>
+      <Route path="/">
+        <Regions list={regionsList} />
+      </Route>
+    </Switch>
+  </Router>
+);
 export default App;
