@@ -53,5 +53,3 @@ export const Regions = ({ list }) => {
     </div>
   );
 };
-
-export default Regions;

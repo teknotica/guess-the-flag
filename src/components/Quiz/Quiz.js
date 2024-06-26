@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/react'
+import { jsx } from "@emotion/react";
 import shuffle from "knuth-shuffle-seeded";
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -93,5 +93,3 @@ export const Quiz = () => {
     </div>
   );
 };
-
-export default Quiz;

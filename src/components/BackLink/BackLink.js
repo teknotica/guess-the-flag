@@ -15,5 +15,3 @@ export const BackLink = ({ id }) => (
     />
   </Link>
 );
-
-export default BackLink;

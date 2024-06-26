@@ -99,5 +99,3 @@ export const Modal = ({ onClose, children }) => {
       )
     : null;
 };
-
-export default Modal;

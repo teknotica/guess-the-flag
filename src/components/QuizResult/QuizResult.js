@@ -29,5 +29,3 @@ export const QuizResult = ({ score }) => {
     </Fragment>
   );
 };
-
-export default QuizResult;

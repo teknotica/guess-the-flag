@@ -94,5 +94,3 @@ export const QuizAnswers = ({ correct, others, questionIndex }) => {
     </div>
   );
 };
-
-export default QuizAnswers;
