@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { Header, Quiz, Regions } from "./components";
 
-const regionsList = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
-
 const App = () => (
   <Router>
     <Header />
@@ -13,7 +11,7 @@ const App = () => (
         <Quiz />
       </Route>
       <Route path="/">
-        <Regions list={regionsList} />
+        <Regions list={["Africa", "Americas", "Asia", "Europe", "Oceania"]} />
       </Route>
     </Switch>
   </Router>

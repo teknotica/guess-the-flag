@@ -3,8 +3,7 @@ import { jsx } from '@emotion/react'
 import { useEffect, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import { focusOnElement } from "../../utils/focusOnElement";
-import publicPath from "../../utils/publicPath";
+import { focusOnElement, publicPath } from "../../utils";
 import styles from "./styles";
 
 export const Regions = ({ list }) => {

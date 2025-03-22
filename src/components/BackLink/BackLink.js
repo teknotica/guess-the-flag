@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/react'
 import { Link } from "react-router-dom";
 
-import publicPath from "../../utils/publicPath";
+import { publicPath } from "../../utils";
 import styles from "./styles";
 
 export const BackLink = ({ id }) => (

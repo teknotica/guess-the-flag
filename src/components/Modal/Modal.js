@@ -3,8 +3,8 @@ import { jsx } from '@emotion/react'
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
-import { useKeydown } from "../../hooks/useKeydown";
-import publicPath from "../../utils/publicPath";
+import useKeydown from "../../hooks/useKeydown";
+import { publicPath } from "../../utils";
 import styles from "./styles";
 
 export const Modal = ({ onClose, children }) => {

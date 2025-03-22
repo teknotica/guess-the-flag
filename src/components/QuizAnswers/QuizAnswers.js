@@ -6,10 +6,7 @@ import whatInput from "what-input";
 
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import { focusOnElement } from "../../utils/focusOnElement";
-import { focusOnQuestion } from "../../utils/focusOnQuestion";
-import getRandomNumber from "../../utils/getRandomNumber";
-import publicPath from "../../utils/publicPath";
+import { focusOnElement, focusOnQuestion, getRandomNumber,publicPath } from "../../utils";
 import { Modal } from "../Modal";
 import { QuizResult } from "../QuizResult";
 import styles from "./styles";

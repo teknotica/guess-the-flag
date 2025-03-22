@@ -3,7 +3,7 @@ import { jsx } from '@emotion/react'
 import { Fragment, useState } from "react";
 
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
-import publicPath from "../../utils/publicPath";
+import { publicPath } from "../../utils";
 import styles from "./styles";
 
 export const QuizResult = ({ score }) => {

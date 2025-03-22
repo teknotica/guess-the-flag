@@ -7,9 +7,8 @@ import { useParams } from "react-router-dom";
 import { QUIZ_QUESTIONS_NUMBER } from "../../const";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { getFlagsByRegion } from "../../services";
-import { regionTitle } from "../../transformers/regionTitle";
-import { focusOnQuestion } from "../../utils/focusOnQuestion";
-import publicPath from "../../utils/publicPath";
+import { transformRegionTitle } from "../../transformers/regionTitle";
+import { focusOnQuestion, publicPath } from "../../utils";
 import { BackLink } from "../BackLink";
 import { GotoTopLink } from "../GotoTopLink";
 import { QuizAnswers } from "../QuizAnswers";
@@ -69,7 +68,7 @@ export const Quiz = () => {
 
   return (
     <div css={styles.quizWrapper}>
-      <h1>Guessing {regionTitle(region)} flags</h1>
+      <h1>Guessing {transformRegionTitle(region)} flags</h1>
       <BackLink id="top-link" />
       <div id="questions-list">
         {slicedFlags.map((item, index) => (

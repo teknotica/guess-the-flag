@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
 
-import publicPath from "../../utils/publicPath";
+import { publicPath}  from "../../utils";
 import styles from "./styles";
 
 export const GotoTopLink = () => (
