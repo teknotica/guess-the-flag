@@ -50,7 +50,7 @@ export default {
       bottom: 0;
       left: 0;
       right: 0;
-      background: #00f260;
+      background: #7ca4e5;
       transform: scaleX(0);
       transform-origin: 50%;
       transition-property: transform;

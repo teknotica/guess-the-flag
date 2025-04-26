@@ -1,3 +1,11 @@
 {
-  "plugins": ["@babel/plugin-proposal-optional-chaining"]
+  "plugins": [[
+    "@emotion",
+    {
+      "sourceMap": true,
+      "autoLabel": "dev-only",
+      "labelFormat": "[local]",
+      "cssPropOptimization": true
+    }
+  ],"@babel/plugin-proposal-optional-chaining"]
 }
